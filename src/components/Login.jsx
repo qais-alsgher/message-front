@@ -21,8 +21,9 @@ function Login() {
       window.location.href = '/users';
     }
   return (
-    <div>
-      <form onSubmit={handleLogin}>
+    <div className='regster'>
+      <form onSubmit={handleLogin} className='regsterForm'>
+        <h1>Login</h1>
         <input type="text" placeholder="userName" onChange={(e)=>{setUserName(e.target.value)}}/>
         <input type="password" placeholder="password" onChange={(e)=>{setPassword(e.target.value)}}/>
         <button type="submit" onClick={handleLogin}>Login</button>

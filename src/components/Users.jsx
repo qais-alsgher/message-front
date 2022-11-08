@@ -9,11 +9,17 @@ const socket = io.connect('http://localhost:8081');
 function Users() {
     const [users, setUsers] =useState([]);
     const [room, setRoom] = useState('');
+    const [userResived, setUserResived] = useState('');
     
     const getUsers = async() => {
         const response = await axios.get(`http://localhost:8081/users`);
         setUsers(response.data);
     }
+    const getUserById= async (id) => {
+        const response = await axios.get(`http://localhost:8081/users/${id}`);
+        setUserResived(response.data);
+    }
+
 
     useEffect(() => {
         getUsers();
@@ -25,31 +31,36 @@ function Users() {
             const roomId = userId+id;
             socket.emit('joinRoom', roomId);
             setRoom(roomId);
+            getUserById(id);
         }else{
             const roomId = id+userId;
             socket.emit('joinRoom', roomId);
             setRoom(roomId);
+            getUserById(id);
         }
 
     }
 
   return (
-    <div>
+    <div className='user' >
+        <div>
       {
-        users.map((users)=>{
-            return(
-                <div key={users.id} onClick={()=>handleJoinRoom(users.id)} className='usergit '>
+          users.map((users)=>{
+              return(
+                <div key={users.id} onClick={()=>handleJoinRoom(users.id)} className='userInfo'>
                     <img src={users.image} alt="userImage"/>
                     <p >{users.userName}</p>
                 </div>
             )
         })
       }
+        </div>
 
       {room&&
         <Chat 
         room={room}
-        socket={socket}/>
+        socket={socket}
+        userResived={userResived.userName}/>
       }
     </div>
   )
