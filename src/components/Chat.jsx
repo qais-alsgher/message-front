@@ -4,7 +4,7 @@ import cookies from 'react-cookies';
 
 function Chat(props) {
     const [messages, setMessages] =useState([]);
-    
+    const userId = cookies.load('id');
     const getMessages = async() => {
         const response = await axios.get(`http://localhost:8081/messages/${props.room}`);
         setMessages(response.data);
@@ -26,7 +26,7 @@ function Chat(props) {
         const data={
           text:e.target.message.value,
           room:props.room,
-          senderId:cookies.load('id'),
+          senderId:userId,
           // save the houre and menite
           date:  new Date(Date.now()).getHours() +
           ":" +
@@ -49,20 +49,21 @@ function Chat(props) {
     }, [props.socket]);
 
   return (
-    <div>
+    <div className='chat'>
+      <h2>{props.userResived}</h2>
       {
         messages.map((message, index) => {
           return (
-            <div key={index}>
-              <p>{message.User.userName}</p>
-              <p>{message.text}</p>
-              <p>{message.date}</p>
+            <div key={index} className={message.senderId===+userId?'ownerMessage':'resvedMessage'}>
+              <p className='nameATime'>{message.User.userName}</p>
+              <p className='messageContent'>{message.text}</p>
+              <p className='nameATime'>{message.date}</p>
             </div>
           )
         })
       }
 
-        <form onSubmit={handleSendMessage}>
+        <form onSubmit={handleSendMessage} className='formSendMessage'>
             <input type="text" name="message" id="message" placeholder="message"/>
             <button type="submit">Send</button>
         </form>

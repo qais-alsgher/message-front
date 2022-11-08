@@ -1,38 +1,227 @@
+/* style app */
 .App {
-  text-align: center;
+display: flex;
+align-items: center;
+justify-content: center;
+padding: 30px 0;
+color: white;
+background-color: black;
+
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+/* style user */
+.user {
+display: flex;
+align-items: center;
+justify-content: center;
+width: 100%;
+height:calc(100vh - 60px);
+/* max-width: 800px; */
+padding: 20px;
+border: 1px solid #ccc;
+border-radius: 5px;
+box-shadow: 0 0 10px #ccc;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+
+.userInfo{
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  width: 100%;
+  /* height: 100vh; */
+  max-width: 300px;
+  min-width: 150px;
+  padding: 10px;
+}
+.userInfo:hover{
+  cursor: pointer;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+.userInfo>img{
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  margin-right: 10px;
+}
+
+/* style chat */
+
+.chat {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 100%;
+  width: 60%;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  box-shadow: 0 0 10px #ccc;
+}
+
+.ownerMessage{
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  justify-content: flex-end;
+  width: auto;
+  line-height: 0.1;
+  border-radius: 5px;
+  background-color: rgb(170, 22, 22);
+  margin-bottom: 10px;
+}
+
+.resvedMessage{
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: flex-start;
+  width: auto;
+  line-height: 0.1;
+  border-radius: 5px;
+  background-color: rgb(77, 70, 70);
+  margin-bottom: 10px;
+}
+
+.nameATime{
+  color: #777;
+  font-size: 12px;
+}
+
+.messageContent{
+  font-size: 18px;
+  letter-spacing: 0.8px;
+  /* wrap when space message is smole */
+  word-break: break-all;
+  word-break: break-word;
+  line-height: 1.5;
+  margin: 0;
+}
+
+.formSendMessage{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: calc(100% - 20px);
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  box-shadow: 0 0 10px #ccc;
+}
+
+
+
+.formSendMessage>input{
+  width: 100%;
+  padding: 10px;
+  border: none;
+  outline: none;
+  box-shadow: none;
+  border-bottom: 1px solid #ccc;
+  border-radius: 0;
+  background-color: transparent;
+  color: #777;
+  font-size: 18px;
+  letter-spacing: 0.8px;
+}
+
+.formSendMessage>button{
+  width: 50x;
+  height: 50px;
+  border: none;
+  outline: none;
+  box-shadow: none;
+  color: white;
+  background-color: transparent;
+  font-size: 18px;
+  letter-spacing: 0.8px;
+  cursor: pointer;
+}
+.formSendMessage>button:hover{
+  border:1px solid #ccc;
+  border-radius: 5px;
+  box-shadow: 0 0 10px #ccc;
+}
+
+/* style signup  */
+
+.regster{
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
+  width: 100%;
+  height:100vh;
+  
+  /* padding: 20px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  box-shadow: 0 0 10px #ccc; */
+}
+
+.regsterForm{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  max-width: 400px;
+  max-height: 400px;
+  width: 100%;
+  height: 100%;
+  padding: 20px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  box-shadow: 0 0 10px #ccc;
+}
+
+.regsterForm>h1{
+  color: #777;
+  font-size: 24px;
+  letter-spacing: 0.8px;
+  margin-bottom: 80px;
+}
+.regsterForm>input{
+  width: 100%;
+  padding: 10px;
+  border: none;
+  outline: none;
+  box-shadow: none;
+  border-bottom: 1px solid #ccc;
+  border-radius: 0;
+  background-color: transparent;
+  color: #777;
+  font-size: 18px;
+  letter-spacing: 0.8px;
+  margin-bottom: 40px;
+}
+ 
+.regsterForm>button{
+  width: 100%;
+  height: 50px;
+  border: none;
+  outline: none;
+  box-shadow: none;
   color: white;
+  background-color: transparent;
+  font-size: 18px;
+  letter-spacing: 0.8px;
+  cursor: pointer;
+  margin-bottom: 20px;
 }
 
-.App-link {
-  color: #61dafb;
+.regsterForm>button:hover{
+  border:1px solid #ccc;
+  border-radius: 5px;
+  box-shadow: 0 0 10px #ccc;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.regsterForm>button:active{
+  background-color: rgb(170, 22, 22);
+}
+
+.regsterForm>a{
+  color: #777;
+  font-size: 18px;
+  letter-spacing: 0.8px;
+  text-decoration: none;
 }
