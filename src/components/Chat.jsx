@@ -1,6 +1,7 @@
 import {React,useState,useEffect}from 'react';
 import axios from 'axios';
 import cookies from 'react-cookies';
+import ScrollToBottom from 'react-scroll-to-bottom';
 
 function Chat(props) {
     const [messages, setMessages] =useState([]);
@@ -34,23 +35,24 @@ function Chat(props) {
         };
        await axios.post(`http://localhost:8081/messages`, data);
        props.socket.emit('sendMessage', data);
+       getMessages();
     }
 
-    useEffect(() => {
-      props.socket.on('message', (data) => {
-        getMessages();
-        // setMessages([...messages, data]);
-      });
 
-      props.socket.on('oldMessage', (data) => {
-        getOldMessages(data);
+    props.socket.on('message', (data) => {
+      getMessages();
+      // setMessages([...messages, data]);
+    });
 
-      });
-    }, [props.socket]);
+    props.socket.on('oldMessage', (data) => {
+      getOldMessages(data);
+
+    });
 
   return (
     <div className='chat'>
       <h2>{props.userResived}</h2>
+      <ScrollToBottom className="messages">
       {
         messages.map((message, index) => {
           return (
@@ -62,6 +64,7 @@ function Chat(props) {
           )
         })
       }
+      </ScrollToBottom>
 
         <form onSubmit={handleSendMessage} className='formSendMessage'>
             <input type="text" name="message" id="message" placeholder="message"/>

@@ -16,13 +16,18 @@ align-items: center;
 justify-content: center;
 width: 100%;
 height:calc(100vh - 60px);
-/* max-width: 800px; */
 padding: 20px;
 border: 1px solid #ccc;
 border-radius: 5px;
 box-shadow: 0 0 10px #ccc;
 }
 
+.users-scroll{
+/* overflow-y: auto; */
+/* overflow-x: hidden; */
+height: 100%;
+
+}
 
 .userInfo{
   display: flex;
@@ -38,6 +43,24 @@ box-shadow: 0 0 10px #ccc;
   cursor: pointer;
 }
 
+@media (max-width: 768px) {
+  .user{
+    display: flex;
+  width: 100%;
+  flex-direction: column;
+  
+  }
+
+  .users-scroll{
+    margin-top: 5px;
+    margin-bottom: 5px;
+    width: 100%;
+    display: flex;
+    overflow-y: hidden;
+    overflow-x: auto;
+  }
+  }
+
 .userInfo>img{
   width: 50px;
   height: 50px;
@@ -46,11 +69,17 @@ box-shadow: 0 0 10px #ccc;
 }
 
 /* style chat */
+.messages {
+width: 100%;
+overflow-y: auto;
+}
+
+
 
 .chat {
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
+  justify-content: flex-end;
   height: 100%;
   width: 60%;
   padding: 10px;
@@ -58,6 +87,16 @@ box-shadow: 0 0 10px #ccc;
   border-radius: 5px;
   box-shadow: 0 0 10px #ccc;
 }
+
+
+@media (max-width: 768px) {
+  .chat{
+    width: 100%;
+    height:calc(100% - 100px);
+    margin-top: 10px;
+  }
+}
+
 
 .ownerMessage{
   display: flex;
@@ -69,6 +108,7 @@ box-shadow: 0 0 10px #ccc;
   border-radius: 5px;
   background-color: rgb(170, 22, 22);
   margin-bottom: 10px;
+  padding-right: 5px;
 }
 
 .resvedMessage{
@@ -77,11 +117,13 @@ box-shadow: 0 0 10px #ccc;
   align-items: flex-start;
   justify-content: flex-start;
   width: auto;
+  padding-left: 5px;
   line-height: 0.1;
   border-radius: 5px;
   background-color: rgb(77, 70, 70);
   margin-bottom: 10px;
 }
+
 
 .nameATime{
   color: #777;
