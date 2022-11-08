@@ -3,6 +3,7 @@ import axios from 'axios';
 import cookies from 'react-cookies';
 import io from 'socket.io-client';
 import Chat from './Chat';
+import ScrollToBottom from 'react-scroll-to-bottom';
 
 const socket = io.connect('http://localhost:8081');
 
@@ -43,7 +44,7 @@ function Users() {
 
   return (
     <div className='user' >
-        <div>
+        <div className="users-scroll">
       {
           users.map((users)=>{
               return(
@@ -55,6 +56,7 @@ function Users() {
         })
       }
         </div>
+      
 
       {room&&
         <Chat 
